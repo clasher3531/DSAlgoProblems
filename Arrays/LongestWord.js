@@ -7,7 +7,7 @@
 
 // Problem Link : https://coderbyte.com/information/Longest%20Word
 
-function LongestWord(sen) { 
+function LongestWord1(sen) { 
     
     // creating javascript object for saving the length of a word as a key and word as a value
     // looping over the string and if the character is under a-z or A-Z then adding that char
@@ -36,4 +36,17 @@ function LongestWord(sen) {
     return longestWord;
 }
 
-console.log(LongestWord("fun&!! time"));
+// Another approach using regex
+function LongestWord2(sen) { 
+    sen=sen.replace(/[^a-zA-Z ]/ig,'')
+    words = sen.split(" ")
+    LongestWord = words[0]
+    for (i = 0; i<words.length; i ++) {
+        if (words[i].length > LongestWord.length) {
+          LongestWord = words[i]	
+        }
+    }
+   return LongestWord
+  }
+
+console.log(LongestWord2("fun&!! time"));
