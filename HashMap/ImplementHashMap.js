@@ -1,4 +1,4 @@
-// Here I am implemented HashMap
+// Here I implemented HashMap
 
 class HashMap {
 
