@@ -122,6 +122,17 @@ class LinkedList {
             deleteNode.next = null;
             this.length--;
         }
+        else if(index===this.length-1){
+            var currentNode = this.head;
+            for(let i = 1;i<index;i++){
+                currentNode = currentNode .next;
+            }
+            var deleteNode = currentNode.next;
+            currentNode.next = deleteNode.next;
+            deleteNode.next = null;
+            this.tail = currentNode;
+            this.length--;
+        }
         // otherwise we traverse upto the index-1 and then setting our index -1 node with 
         // the index + 1 node.
         else{
