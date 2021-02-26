@@ -147,15 +147,44 @@ class LinkedList {
         }
         return this;
     }
+    // Reversing linkedList
+    reverse(){
+
+        //O(N^2) approach
+        // var currentNode = this.head;
+        // var count = 2;
+        // while(currentNode.next !== null){
+        //     this.prepend(currentNode.next.value);
+        //     this.remove(count);
+        //     count++;
+        // }
+
+        //O(N) approach
+        if (!this.head.next) {
+            return this.head;
+          }
+          let first = this.head;
+          this.tail = this.head;
+          let second = first.next;
+      
+          while(second) {
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+          }
+      
+          this.head.next = null;
+          this.head = first;
+          return this
+    }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
-myLinkedList.insert(1,99);
-myLinkedList.insert(4,32);
+myLinkedList.remove(3);
 myLinkedList.printList();
-myLinkedList.remove(5);
-myLinkedList.remove(4);
+myLinkedList.reverse();
 myLinkedList.printList();
