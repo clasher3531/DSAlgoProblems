@@ -10,7 +10,6 @@ function MergeTwoSortedArray(array1,array2) {
             result.push(array2[j]);
             j++;
         }
-        console.log(array2[j])
     }
 
     return result;
