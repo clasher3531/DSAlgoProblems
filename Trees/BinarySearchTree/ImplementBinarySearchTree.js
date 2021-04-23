@@ -127,6 +127,83 @@ class BinarySearchTree {
             }
         }
     }
+    // Iterative Approach of BFS
+    breadthFirstSearch(){
+        var currentNode = this.root;
+        var queue = [];
+        var result = [];
+        queue.push(currentNode);
+        while(queue.length > 0){
+            currentNode = queue.shift();
+            result.push(currentNode.value);
+            if(currentNode.left){
+                queue.push(currentNode.left);
+            }
+            if(currentNode.right){
+                queue.push(currentNode.right);
+            }
+        }
+        return result;
+    }
+    // Recursive Approach of BFS
+    breadthFirstSearchR(queue,list){
+        if(queue.left === 0){
+            return list
+        }
+        var currentNode = queue.shift();
+        list.push(currentNode);
+        if(currentNode.left){
+            queue.push(currentNode.left);
+        }
+        if(currentNode.right){
+            queue.push(currentNode.right);
+        }
+        return this.breadthFirstSearch(queue,list);
+    }
+    // Depth First Search
+    // Inorder
+    DFSInorder(){
+        return this.traverseInOrder(this.root,[]);
+    }
+    // Preorder
+    DFSPreorder(){
+        return this.traversePreOrder(this.root,[]);
+    }
+    // Postorder
+    DFSPostorder(){
+        return this.traversePostOrder(this.root,[]);
+    }
+
+    traverseInOrder(node,list){
+        if(node.left){
+            this.traverseInOrder(node.left,list)
+        }
+        list.push(node.value);
+        if(node.right){
+            this.traverseInOrder(node.right,list)
+        }
+        return list
+    }
+    traversePreOrder(node,list){
+        list.push(node.value);
+        if(node.left){
+            this.traversePreOrder(node.left,list)
+        }
+        if(node.right){
+            this.traversePreOrder(node.right,list)
+        }
+        return list
+    }
+    traversePostOrder(node,list){
+        if(node.left){
+            this.traversePostOrder(node.left,list)
+        }
+        if(node.right){
+            this.traversePostOrder(node.right,list)
+        }
+        list.push(node.value);
+        return list
+    }
 }
 
 const tree = new BinarySearchTree();
@@ -137,7 +214,11 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-console.log(JSON.stringify(traverse(tree.root)));
+// console.log(tree.breadthFirstSearch());
+// console.log(tree.breadthFirstSearchR([tree.root],[]));
+console.log(tree.DFSInorder());
+console.log(tree.DFSPreorder());
+console.log(tree.DFSPostorder());
 
 function traverse(node) {
     const tree = { value: node.value };
