@@ -26,5 +26,5 @@ var subarraySum = function(nums, k) {
 
 var areas = [10, 2, -2, -20, 10];
 const K = -10;
-var result = sumToK(areas,K);
+var result = subarraySum(areas,K);
 console.log(result);
